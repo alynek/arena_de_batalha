@@ -1,0 +1,13 @@
+C:\Users\alyne\projects\AreanDeBatalha\AreanDeBatalha.GUI\bin\Debug\AreanDeBatalha.GUI.exe.config
+C:\Users\alyne\projects\AreanDeBatalha\AreanDeBatalha.GUI\bin\Debug\AreanDeBatalha.GUI.exe
+C:\Users\alyne\projects\AreanDeBatalha\AreanDeBatalha.GUI\bin\Debug\AreanDeBatalha.GUI.pdb
+C:\Users\alyne\projects\AreanDeBatalha\AreanDeBatalha.GUI\bin\Debug\ArenaDeBatalha.GameLogic.dll
+C:\Users\alyne\projects\AreanDeBatalha\AreanDeBatalha.GUI\bin\Debug\ArenaDeBatalha.GameLogic.pdb
+C:\Users\alyne\projects\AreanDeBatalha\AreanDeBatalha.GUI\obj\Debug\ArenaDeBatalha.GUI.csproj.AssemblyReference.cache
+C:\Users\alyne\projects\AreanDeBatalha\AreanDeBatalha.GUI\obj\Debug\AreanDeBatalha.GUI.Properties.Resources.resources
+C:\Users\alyne\projects\AreanDeBatalha\AreanDeBatalha.GUI\obj\Debug\ArenaDeBatalha.GUI.csproj.GenerateResource.cache
+C:\Users\alyne\projects\AreanDeBatalha\AreanDeBatalha.GUI\obj\Debug\ArenaDeBatalha.GUI.csproj.CoreCompileInputs.cache
+C:\Users\alyne\projects\AreanDeBatalha\AreanDeBatalha.GUI\obj\Debug\ArenaDeBatalha.GUI.csproj.CopyComplete
+C:\Users\alyne\projects\AreanDeBatalha\AreanDeBatalha.GUI\obj\Debug\AreanDeBatalha.GUI.exe
+C:\Users\alyne\projects\AreanDeBatalha\AreanDeBatalha.GUI\obj\Debug\AreanDeBatalha.GUI.pdb
+C:\Users\alyne\projects\AreanDeBatalha\AreanDeBatalha.GUI\obj\Debug\ArenaDeBatalha.GUI.FormPrincipal.resources

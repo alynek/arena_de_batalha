@@ -79,5 +79,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ArenaDeBatalha.GameLogic\ArenaDeBatalha.Logica.csproj">
+      <Project>{b1bface5-1baa-4a2a-b4d2-bb3e9019f7b8}</Project>
+      <Name>ArenaDeBatalha.Logica</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

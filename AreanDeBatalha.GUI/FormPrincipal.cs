@@ -1,20 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using ArenaDeBatalha.GameLogic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AreanDeBatalha.GUI
+namespace ArenaDeBatalha.GUI
 {
     public partial class FormPrincipal : Form
     {
+
+        Bitmap telaBuffer { get; set; }
+        Graphics telaDePintura { get; set; }
+        TelaDeFundo telaDeFundo { get; set; }
         public FormPrincipal()
         {
             InitializeComponent();
+            this.telaBuffer = new Bitmap(Media.cosmos.Width, Media.cosmos.Height);
+            this.telaDePintura = Graphics.FromImage(this.telaBuffer);
+            this.telaDeFundo = new TelaDeFundo(this.telaBuffer.Size, this.telaDePintura);
         }
     }
 }

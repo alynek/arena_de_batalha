@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AreanDeBatalha.GUI
+namespace ArenaDeBatalha.GUI
 {
     static class Program
     {

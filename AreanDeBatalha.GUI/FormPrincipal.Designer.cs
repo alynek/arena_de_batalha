@@ -1,5 +1,5 @@
 ﻿
-namespace AreanDeBatalha.GUI
+namespace ArenaDeBatalha.GUI
 {
     partial class FormPrincipal
     {
