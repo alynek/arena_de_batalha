@@ -49,6 +49,7 @@
       <DependentUpon>Media.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TelaDeFundo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Media.resx">
