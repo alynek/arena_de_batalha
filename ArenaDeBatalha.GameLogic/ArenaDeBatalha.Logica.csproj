@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Inimigo.cs" />
     <Compile Include="ObjetoBase.cs" />
     <Compile Include="Media.Designer.cs">
       <AutoGen>True</AutoGen>
