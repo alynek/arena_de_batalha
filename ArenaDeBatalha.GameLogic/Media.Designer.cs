@@ -150,9 +150,9 @@ namespace ArenaDeBatalha.GameLogic {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap nave1 {
+        public static System.Drawing.Bitmap nave {
             get {
-                object obj = ResourceManager.GetObject("nave1", resourceCulture);
+                object obj = ResourceManager.GetObject("nave", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Inimigo.cs" />
+    <Compile Include="Jogador.cs" />
     <Compile Include="ObjetoBase.cs" />
     <Compile Include="Media.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -83,13 +84,19 @@
     <None Include="Resources\projetil.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\nave1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\laser1.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cosmos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nave1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kisspng-spacecraft-spaceshipone-clip-art-space-craft-5acb93b4458896.3375076715232910602848.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nave.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
