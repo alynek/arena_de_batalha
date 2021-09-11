@@ -82,13 +82,13 @@
     <None Include="Resources\projetil.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cosmos.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\nave1.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\laser1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cosmos.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
