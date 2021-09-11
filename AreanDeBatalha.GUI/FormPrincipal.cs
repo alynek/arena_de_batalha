@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace ArenaDeBatalha.GUI
@@ -18,6 +19,7 @@ namespace ArenaDeBatalha.GUI
         TelaDeFundo telaDeFundo { get; set; }
         List<ObjetoBase> objetosBase { get; set; }
         public Random random { get; set; }
+        Jogador jogador { get; set; }
         public FormPrincipal()
         {
             InitializeComponent();
@@ -27,6 +29,8 @@ namespace ArenaDeBatalha.GUI
             this.telaDePintura = Graphics.FromImage(this.telaBuffer);
             this.objetosBase = new List<ObjetoBase>();
             this.telaDeFundo = new TelaDeFundo(this.telaBuffer.Size, this.telaDePintura);
+
+            this.jogador = new Jogador(this.telaBuffer.Size, this.telaDePintura);
             
             this.intervaloDeTempoDeJogo = new DispatcherTimer(DispatcherPriority.Render);
             this.intervaloDeTempoDeJogo.Interval = TimeSpan.FromMilliseconds(16.66666);
@@ -37,6 +41,7 @@ namespace ArenaDeBatalha.GUI
             this.intervaloDeCriacaoDeInimigo.Tick += CriarInimigo;
 
             this.objetosBase.Add(telaDeFundo);
+            this.objetosBase.Add(jogador);
 
             this.random = new Random();
 
@@ -52,6 +57,8 @@ namespace ArenaDeBatalha.GUI
         public void LoopDoJogo(object sender, EventArgs e)
         {
             this.objetosBase.RemoveAll(x => !x.Ativo);
+
+            this.ProcessarControles();
 
             foreach(ObjetoBase objeto in this.objetosBase)
             {
@@ -77,6 +84,14 @@ namespace ArenaDeBatalha.GUI
             Point posicaoDoInimigo = new Point(this.random.Next(10, this.telaBuffer.Width - 74), -62);
             Inimigo inimigo = new Inimigo(this.telaBuffer.Size, this.telaDePintura, posicaoDoInimigo);
             this.objetosBase.Add(inimigo);
+        }
+
+        private void ProcessarControles()
+        {
+            if (Keyboard.IsKeyDown(Key.A) || Keyboard.IsKeyDown(Key.Left)) jogador.MoverParaEsquerda();
+            if (Keyboard.IsKeyDown(Key.D) || Keyboard.IsKeyDown(Key.Right)) jogador.MoverParaDireita();
+            if (Keyboard.IsKeyDown(Key.W) || Keyboard.IsKeyDown(Key.Up)) jogador.MoverParaCima();
+            if (Keyboard.IsKeyDown(Key.S) || Keyboard.IsKeyDown(Key.Down)) jogador.MoverParaBaixo();
         }
     }
 }
