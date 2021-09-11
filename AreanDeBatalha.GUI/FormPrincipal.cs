@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Threading;
@@ -94,10 +95,20 @@ namespace ArenaDeBatalha.GUI
                 {
                     if (objeto.EstaColidindoComOutroObjeto(jogador))
                     {
-                        jogador.DestruirObjeto();
+                        
                         jogador.TocarSom();
+                        jogador.DestruirObjeto();
                         FimDeJogo();
                         return;
+                    }
+
+                    foreach(ObjetoBase tiro in this.objetosBase.Where(x => x is Tiro))
+                    {
+                        if (objeto.EstaColidindoComOutroObjeto(tiro))
+                        {
+                            objeto.DestruirObjeto();
+                            tiro.DestruirObjeto();
+                        }
                     }
                 }
             }
@@ -127,7 +138,7 @@ namespace ArenaDeBatalha.GUI
 
             if (Keyboard.IsKeyDown(Key.Space) && _podeAtirar)
             {
-                this.objetosBase.Add(jogador.Atirar());
+                this.objetosBase.Insert(1, jogador.Atirar());
                 this._podeAtirar = false;
             }
             if (Keyboard.IsKeyUp(Key.Space)) _podeAtirar = true;

@@ -59,6 +59,7 @@
     <EmbeddedResource Include="Media.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Media.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +103,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\gameOver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\explosao.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

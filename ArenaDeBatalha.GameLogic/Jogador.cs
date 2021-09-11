@@ -22,11 +22,6 @@ namespace ArenaDeBatalha.GameLogic
             return Media.nave;
         }
 
-        public override void AtualizarObjeto()
-        {
-            base.AtualizarObjeto();
-        }
-
         public override void MoverParaCima()
         {
             if(this.Topo > 0)
