@@ -53,6 +53,11 @@ namespace ArenaDeBatalha.GUI
 
         public void IniciarJogo()
         {
+            this.objetosBase.Clear();
+            this.objetosBase.Add(telaDeFundo);
+            this.objetosBase.Add(jogador);
+            this.jogador.CriarPosicaoInicial();
+            this.jogador.Ativo = true;
             this.intervaloDeTempoDeJogo.Start();
             this.intervaloDeCriacaoDeInimigo.Start();
             _podeAtirar = true;
@@ -60,7 +65,7 @@ namespace ArenaDeBatalha.GUI
 
         public void FimDeJogo()
         {
-            this.objetosBase.RemoveAll(x => x is ObjetoBase);
+            this.objetosBase.Clear();
             this.intervaloDeTempoDeJogo.Stop();
             this.intervaloDeCriacaoDeInimigo.Stop();
             this.objetosBase.Add(telaDeFundo);
@@ -126,6 +131,19 @@ namespace ArenaDeBatalha.GUI
                 this._podeAtirar = false;
             }
             if (Keyboard.IsKeyUp(Key.Space)) _podeAtirar = true;
+        }
+
+        private void FormPrincipal_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.R)
+            {
+                IniciarJogo();
+            }
+            
+            if(e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
         }
     }
 }

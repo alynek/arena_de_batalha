@@ -8,6 +8,11 @@ namespace ArenaDeBatalha.GameLogic
         {
             this.Velocidade = 10;
             this.Som = Media.explosion_long;
+            CriarPosicaoInicial();
+        }
+
+        public void CriarPosicaoInicial()
+        {
             this.Esquerda = (this.Limites.Width / 2) - (this.Largura / 2);
             this.Topo = this.Limites.Height - this.Altura;
         }
