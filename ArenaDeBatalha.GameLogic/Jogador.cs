@@ -37,5 +37,14 @@ namespace ArenaDeBatalha.GameLogic
                 this.Topo += this.Velocidade;
             }
         }
+
+        public ObjetoBase Atirar()
+        {
+            Tiro tiro = new Tiro(this.Limites, this.Tela, 
+                new Point(this.Esquerda + (this.Largura/2), this.Topo + (this.Altura/2)));
+
+            tiro.Esquerda -= (tiro.Largura / 2);
+            return tiro;
+        }
     }
 }

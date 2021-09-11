@@ -12,6 +12,7 @@ namespace ArenaDeBatalha.GUI
 {
     public partial class FormPrincipal : Form
     {
+        private bool _podeAtirar;
         DispatcherTimer intervaloDeTempoDeJogo { get; set; }
         DispatcherTimer intervaloDeCriacaoDeInimigo { get; set; }
         Bitmap telaBuffer { get; set; }
@@ -20,6 +21,7 @@ namespace ArenaDeBatalha.GUI
         List<ObjetoBase> objetosBase { get; set; }
         public Random random { get; set; }
         Jogador jogador { get; set; }
+        FimDeJogo fimDeJogo { get; set; }
         public FormPrincipal()
         {
             InitializeComponent();
@@ -31,6 +33,7 @@ namespace ArenaDeBatalha.GUI
             this.telaDeFundo = new TelaDeFundo(this.telaBuffer.Size, this.telaDePintura);
 
             this.jogador = new Jogador(this.telaBuffer.Size, this.telaDePintura);
+            this.fimDeJogo = new FimDeJogo(this.telaBuffer.Size, this.telaDePintura);
             
             this.intervaloDeTempoDeJogo = new DispatcherTimer(DispatcherPriority.Render);
             this.intervaloDeTempoDeJogo.Interval = TimeSpan.FromMilliseconds(16.66666);
@@ -52,6 +55,19 @@ namespace ArenaDeBatalha.GUI
         {
             this.intervaloDeTempoDeJogo.Start();
             this.intervaloDeCriacaoDeInimigo.Start();
+            _podeAtirar = true;
+        }
+
+        public void FimDeJogo()
+        {
+            this.objetosBase.RemoveAll(x => x is ObjetoBase);
+            this.intervaloDeTempoDeJogo.Stop();
+            this.intervaloDeCriacaoDeInimigo.Stop();
+            this.objetosBase.Add(telaDeFundo);
+            this.objetosBase.Add(fimDeJogo);
+            this.telaDeFundo.AtualizarObjeto();
+            this.fimDeJogo.AtualizarObjeto();
+            Invalidate();
         }
 
         public void LoopDoJogo(object sender, EventArgs e)
@@ -69,8 +85,19 @@ namespace ArenaDeBatalha.GUI
                     objeto.DestruirObjeto();
                 }
 
-                this.Invalidate();
+                if(objeto is Inimigo)
+                {
+                    if (objeto.EstaColidindoComOutroObjeto(jogador))
+                    {
+                        jogador.DestruirObjeto();
+                        jogador.TocarSom();
+                        FimDeJogo();
+                        return;
+                    }
+                }
             }
+
+            this.Invalidate();
             //Debug.WriteLine(this.objetosBase.Count); Observa a quantidade de objetos criados e verifica se estão sendo destruídos
         }
         private void FormPrincipal_Paint(object sender, PaintEventArgs e)
@@ -92,6 +119,13 @@ namespace ArenaDeBatalha.GUI
             if (Keyboard.IsKeyDown(Key.D) || Keyboard.IsKeyDown(Key.Right)) jogador.MoverParaDireita();
             if (Keyboard.IsKeyDown(Key.W) || Keyboard.IsKeyDown(Key.Up)) jogador.MoverParaCima();
             if (Keyboard.IsKeyDown(Key.S) || Keyboard.IsKeyDown(Key.Down)) jogador.MoverParaBaixo();
+
+            if (Keyboard.IsKeyDown(Key.Space) && _podeAtirar)
+            {
+                this.objetosBase.Add(jogador.Atirar());
+                this._podeAtirar = false;
+            }
+            if (Keyboard.IsKeyUp(Key.Space)) _podeAtirar = true;
         }
     }
 }

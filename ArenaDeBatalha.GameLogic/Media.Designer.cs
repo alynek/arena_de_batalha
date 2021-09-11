@@ -91,19 +91,9 @@ namespace ArenaDeBatalha.GameLogic {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fundo {
+        public static System.Drawing.Bitmap gameOver {
             get {
-                object obj = ResourceManager.GetObject("fundo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap GameOver {
-            get {
-                object obj = ResourceManager.GetObject("GameOver", resourceCulture);
+                object obj = ResourceManager.GetObject("gameOver", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -121,19 +111,9 @@ namespace ArenaDeBatalha.GameLogic {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap jogador {
+        public static System.Drawing.Bitmap laser {
             get {
-                object obj = ResourceManager.GetObject("jogador", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap laser1 {
-            get {
-                object obj = ResourceManager.GetObject("laser1", resourceCulture);
+                object obj = ResourceManager.GetObject("laser", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,16 +133,6 @@ namespace ArenaDeBatalha.GameLogic {
         public static System.Drawing.Bitmap nave {
             get {
                 object obj = ResourceManager.GetObject("nave", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap projetil {
-            get {
-                object obj = ResourceManager.GetObject("projetil", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
