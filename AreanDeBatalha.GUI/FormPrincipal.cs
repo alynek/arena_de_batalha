@@ -10,11 +10,13 @@ namespace ArenaDeBatalha.GUI
 {
     public partial class FormPrincipal : Form
     {
-        DispatcherTimer tempoDoJogo { get; set; }
+        DispatcherTimer intervaloDeTempoDeJogo { get; set; }
+        DispatcherTimer intervaloDeCriacaoDeInimigo { get; set; }
         Bitmap telaBuffer { get; set; }
         Graphics telaDePintura { get; set; }
         TelaDeFundo telaDeFundo { get; set; }
         List<ObjetoBase> objetosBase { get; set; }
+        public Random random { get; set; }
         public FormPrincipal()
         {
             InitializeComponent();
@@ -25,18 +27,25 @@ namespace ArenaDeBatalha.GUI
             this.objetosBase = new List<ObjetoBase>();
             this.telaDeFundo = new TelaDeFundo(this.telaBuffer.Size, this.telaDePintura);
             
-            this.tempoDoJogo = new DispatcherTimer(DispatcherPriority.Render);
-            this.tempoDoJogo.Interval = TimeSpan.FromMilliseconds(16.66666);
-            this.tempoDoJogo.Tick += LoopDoJogo;
+            this.intervaloDeTempoDeJogo = new DispatcherTimer(DispatcherPriority.Render);
+            this.intervaloDeTempoDeJogo.Interval = TimeSpan.FromMilliseconds(16.66666);
+            this.intervaloDeTempoDeJogo.Tick += LoopDoJogo;
+            
+            this.intervaloDeCriacaoDeInimigo = new DispatcherTimer(DispatcherPriority.Render);
+            this.intervaloDeCriacaoDeInimigo.Interval = TimeSpan.FromMilliseconds(1000);
+            this.intervaloDeCriacaoDeInimigo.Tick += CriarInimigo;
 
             this.objetosBase.Add(telaDeFundo);
+
+            this.random = new Random();
 
             IniciarJogo();
         }
 
         public void IniciarJogo()
         {
-            this.tempoDoJogo.Start();
+            this.intervaloDeTempoDeJogo.Start();
+            this.intervaloDeCriacaoDeInimigo.Start();
         }
 
         public void LoopDoJogo(object sender, EventArgs e)
@@ -51,6 +60,13 @@ namespace ArenaDeBatalha.GUI
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             e.Graphics.DrawImage(this.telaBuffer, 0, 0);
+        }
+
+        public void CriarInimigo(object sender, EventArgs e)
+        {
+            Point posicaoDoInimigo = new Point(this.random.Next(10, this.telaBuffer.Width - 74), -62);
+            Inimigo inimigo = new Inimigo(this.telaBuffer.Size, this.telaDePintura, posicaoDoInimigo);
+            this.objetosBase.Add(inimigo);
         }
     }
 }
