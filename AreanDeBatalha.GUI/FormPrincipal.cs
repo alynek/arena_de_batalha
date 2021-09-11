@@ -1,6 +1,7 @@
 ﻿using ArenaDeBatalha.GameLogic;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
@@ -50,11 +51,20 @@ namespace ArenaDeBatalha.GUI
 
         public void LoopDoJogo(object sender, EventArgs e)
         {
+            this.objetosBase.RemoveAll(x => !x.Ativo);
+
             foreach(ObjetoBase objeto in this.objetosBase)
             {
                 objeto.AtualizarObjeto();
+
+                if (objeto.EstaForaDaTela())
+                {
+                    objeto.DestruirObjeto();
+                }
+
                 this.Invalidate();
             }
+            //Debug.WriteLine(this.objetosBase.Count); Observa a quantidade de objetos criados e verifica se estão sendo destruídos
         }
         private void FormPrincipal_Paint(object sender, PaintEventArgs e)
         {
